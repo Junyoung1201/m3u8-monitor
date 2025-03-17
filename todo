@@ -1,0 +1,2 @@
+[-] PageInfo 클래스가 페이지의 DOM에는 없어서 되질 않으니 되게 할 것
+[-] TabUtil 클래스 만들어서 getCurrentTabId(), executeScript() 메소드 static으로 만들 것

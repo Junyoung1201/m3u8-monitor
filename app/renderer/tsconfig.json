@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "target": "ES2021",
+        "module": "CommonJS",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "baseUrl": "./src",
+        "strict": true,
+        "paths": {
+            "utils/*": ["utils/*"],
+            "types/*": ["types/*"],
+            "components/*": ["components/*"],
+            "store/*": ["store/*"]
+        }
+    }
+}

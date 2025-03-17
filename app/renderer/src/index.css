@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+    font-family: pretendard;
+    font-size: 17px;
+}
+
+body {  
+    margin: 0;
+    background: #353535;
+    color: white;
+}
+
+button {
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+}
+
+button:has(>img) {
+    padding: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(110,110,110,0.2);
+    border: 1px solid gray;
+    border-radius: 100px;
+}
+
+input[type="text"] {
+    border: 0;
+    outline: none;
+
+    background: transparent;
+    border-bottom: 1px solid rgba(110,110,110);
+    font-size: 16px;
+    padding: 5px;
+    color: white;
+    width: 100%;
+}

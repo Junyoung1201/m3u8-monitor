@@ -1,0 +1,32 @@
+{
+  "name": "m3u8-monitor-native",
+  "author": "이준영",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/electron": "^1.4.38",
+    "@types/fs-extra": "^11.0.4",
+    "@types/socket.io": "^3.0.1",
+    "concurrently": "^9.1.2",
+    "electron": "^35.0.1",
+    "electron-builder": "^25.1.8",
+    "nodemon": "^3.1.9",
+    "wait-on": "^8.0.3"
+  },
+  "scripts": {
+    "start:electron": "cls && npx tsc && electron ./assets/main.js",
+    "dev:electron": "nodemon -e ts --watch src --exec npm run start:electron",
+    "dev:react": "cd renderer && npm start",
+    "start": "concurrently \"npm run dev:react\" \"npm run dev:electron\"",
+    "build": "call build.bat"
+  },
+  "_moduleAliases": {
+    "modules": "assets/modules",
+    "types": "assets/types"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.3.0",
+    "module-alias": "^2.2.3",
+    "socket.io": "^4.8.1"
+  }
+}

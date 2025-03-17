@@ -1,0 +1,80 @@
+section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    >div:not([data-no-clickable]):hover {
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+    }
+
+    /*  하단 메뉴  */
+    div.footer-menu {
+        button:first-child {
+            margin-left: 0;
+        }
+
+        button {
+            margin: 2px;
+            font-size: 15px;
+            padding: 5px;
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+    }
+
+    >div {
+        position: relative;
+        padding: 15px;
+        padding-top: 10px;
+        border-radius: 5px;
+
+        >* {
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+        }
+
+        >div.title {
+            position: relative;
+            font-size: 15.5px;
+            font-weight: 300;
+            color: lightgray;
+            margin-bottom: 5px;
+        }
+
+        /*  설명  */
+        div.desc {
+            max-height: 80px;
+            overflow-y: auto;
+        }
+
+        /*  키워드 목록  */
+        div.kw-list {
+            div.kw-item {
+                display: inline-block;
+                color: white;
+                text-align: center;
+                border-radius: 5px;
+                padding: 5px;
+                margin: 2.5px;
+                font-size: 15px;
+                background: rgb(110, 110, 110);
+            }
+        }
+
+        /*  URL 목록 부모  */
+        div.url-list-holder {
+            position: relative;
+            width: 100%;
+        }
+    }
+}

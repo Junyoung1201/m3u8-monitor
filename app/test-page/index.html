@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3U8 Video Player</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.21.1/video.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.21.1/video-js.min.css" rel="stylesheet">
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; margin: 50px; }
+        video { width: 80%; max-width: 720px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>M3U8 Video Player</h1>
+    <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto">
+        <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
+        브라우저가 HLS를 지원하지 않습니다.
+    </video>
+    
+    <script>
+        var player = videojs('videoPlayer');
+        player.play();
+    </script>
+</body>
+</html>
