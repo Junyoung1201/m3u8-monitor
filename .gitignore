@@ -1,6 +1,8 @@
 
 ffmpeg.exe
 assets/
+*.mp4
+
 # Logs
 logs
 *.log
