@@ -1,20 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UrlList } from "types/url";
+import Strings from "strings";
+import { I_M3u8Item, I_M3u8Modify, M3u8List } from "types/m3u8";
 
 interface init {
     title: string,
     keywordList: string[],
     desc: string,
-    urlList: UrlList,
-    videoOutputPath: string
+    m3u8List: M3u8List
 }
 
 export const initialState: init = {
     title: "없음",
     keywordList: [],
-    videoOutputPath: "A:\\Elurim\\Videos",
     desc: "없음",
-    urlList: []
+    m3u8List: []
 }
 
 export const infoSlice = createSlice({
@@ -24,7 +23,7 @@ export const infoSlice = createSlice({
         clear(state) {
             state.title = "없음";
             state.desc = "없음";
-            state.urlList = [];
+            state.m3u8List = [];
             state.keywordList = [];
             console.clear();
             console.log("정보 초기화")
@@ -32,10 +31,6 @@ export const infoSlice = createSlice({
 
         setTitle(state, action) {
             state.title = action.payload;
-        },
-
-        setVideoOutputPath(state, action) {
-            state.videoOutputPath = action.payload
         },
 
         setKeywordList(state, action) {
@@ -47,29 +42,29 @@ export const infoSlice = createSlice({
         },
 
         setUrlList(state, action) {
-            state.urlList = action.payload
+            state.m3u8List = action.payload
         },
 
-        addUrl(state, action) {
-            if(state.urlList.find(i => i.url === action.payload.url) === undefined) {
-                state.urlList.push(action.payload)
+        addM3u8(state, action) {
+            if(state.m3u8List.find(i => i.url === action.payload.url) === undefined) {
+                state.m3u8List.push(action.payload)
             }
         },
 
         clearUrlList(state) {
-            state.urlList = state.urlList.filter(url => url.status === "downloading");
+            state.m3u8List = state.m3u8List.filter(url => url.status === Strings.STATUS_DOWNLOADING);
         },
 
-        setUrlStatus(state, {payload}: PayloadAction<{url: string, status: string}>) {
-            let target = state.urlList.find(({url}) => url === payload.url)
+        updateM3u8(state: typeof initialState, {payload}: PayloadAction<I_M3u8Modify>) {
+            let m3u8 = state.m3u8List.find(m => m.url === payload.url);
 
-            if(target) {
-                target.status = payload.status;
+            if(m3u8) {
+                Object.assign(m3u8, payload)
             }
         },
 
         setFileName(state, {payload}: PayloadAction<{url:string, newFileName: string}>) {
-            let target = state.urlList.find(({url}) => url === payload.url)
+            let target = state.m3u8List.find(({url}) => url === payload.url)
 
             if(target) {
                 target.fileName = payload.newFileName;
@@ -78,4 +73,4 @@ export const infoSlice = createSlice({
     }
 })
 
-export const {setFileName,setVideoOutputPath,setUrlStatus,clearUrlList, addUrl,clear:clearInfo,setUrlList,setDescription,setKeywordList,setTitle} = infoSlice.actions;
+export const {setFileName,updateM3u8,clearUrlList, addM3u8,clear:clearInfo,setUrlList,setDescription,setKeywordList,setTitle} = infoSlice.actions;

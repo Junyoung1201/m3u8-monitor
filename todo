@@ -1,2 +1,1 @@
-[-] PageInfo 클래스가 페이지의 DOM에는 없어서 되질 않으니 되게 할 것
-[-] TabUtil 클래스 만들어서 getCurrentTabId(), executeScript() 메소드 static으로 만들 것
+- config.ts 좀 더 유연하게 관리할 수 있도록 만들고, 데이터 이름 통일시키셈

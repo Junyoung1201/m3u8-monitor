@@ -3,7 +3,7 @@ import { infoSlice } from './info';
 
 export const store = configureStore({
     reducer: {
-        info: infoSlice.reducer
+        info: infoSlice.reducer,
     }
 })
 

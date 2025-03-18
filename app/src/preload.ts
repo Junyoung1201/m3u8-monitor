@@ -25,12 +25,6 @@ contextBridge.exposeInMainWorld('electron', {
         return await ipcRenderer.invoke(channel, data)
     },
 
-    getConfig() {
-        return {
-            videoDownloadPath: Config.getVideoDownloadPath()
-        }
-    },
-
     test() {
         ipcRenderer.send("test", "preload");
     }

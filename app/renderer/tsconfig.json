@@ -11,7 +11,8 @@
             "utils/*": ["utils/*"],
             "types/*": ["types/*"],
             "components/*": ["components/*"],
-            "store/*": ["store/*"]
+            "store/*": ["store/*"],
+            "modules/*": ["modules/*"]
         }
     }
 }

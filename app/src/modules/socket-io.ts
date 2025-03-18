@@ -1,10 +1,12 @@
 import {createServer} from 'http';
 import { Server } from 'socket.io';
-import { sendToRenderer } from './ipc-main';
+import CommuManager from './comu';
+
+export let io: Server;
 
 export default function startSocketServer() {
     let server = createServer();
-    let io = new Server(server, {
+    io = new Server(server, {
         cors: {
             origin: ["http://localhost:*"]
         }
@@ -19,26 +21,22 @@ export default function startSocketServer() {
 
         /*  정보 초기화 신호  */
         socket.on('clear-all', () => {
-            console.log("정보 초기화 수신")
-            sendToRenderer('clear-all');
+            CommuManager.sendToRenderer('clear-all');
         })
 
         /*  m3u8 url 목록 초기화 신호  */
         socket.on('clear-url-list', () => {
-            console.log("url 목록 초기화 수신")
-            sendToRenderer('clear-url-list');
+            CommuManager.sendToRenderer('clear-url-list');
         })
         
         /*  m3u8 url 발견 신호  */
         socket.on('found-m3u8', (data) => {
-            console.log(`m3u8 발견 (파일 이름: ${data.fileName}, url: ${data.url})`);
-            sendToRenderer("found-m3u8", data)
+            CommuManager.sendToRenderer("found-m3u8", data)
         })
 
         /*  정보 수신 신호  */
         socket.on('info', (data) => {
-            console.log(`정보 수신`,data);
-            sendToRenderer("info", data)
+            CommuManager.sendToRenderer("info", data)
         })
 
     })

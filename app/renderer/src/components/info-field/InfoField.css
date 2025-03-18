@@ -1,0 +1,19 @@
+/*  설명  */
+div#description {
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+/*  키워드 목록  */
+div#kw-list {
+    div.kw-item {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 2.5px;
+        font-size: 15px;
+        background: rgb(110, 110, 110);
+    }
+}

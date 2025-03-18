@@ -10,26 +10,57 @@ body {
     color: white;
 }
 
+/*  버튼 공통  */
 button {
+    background: transparent;
     border: 0;
     outline: none;
+    transition: all 0.2s ease;
     cursor: pointer;
-    background: transparent;
-    color: white;
 }
 
-button:has(>img) {
+/*  텍스트 버튼  */
+button:not(:has(img)) {
+    color: rgb(230,230,230);
+    transition: none;
     padding: 5px;
+}
+
+button:not(:has(img)):hover {
+    background: rgb(230,230,230);
+    color: #353535;
+}
+
+button:not(:has(img)):active {
+    background: rgb(250,250,250);
+    color: #353535;
+}
+
+/*  아이콘 버튼  */
+button:has(img) {
+
+    padding: 10px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+        height: 20px;
+    }
 }
 
-button:hover {
+button:has(img):hover {
+    border-radius: 100%;
     background: rgba(255, 255, 255, 0.1);
 }
 
+button:has(img):active {
+    border-radius: 100%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/*  스크롤바  */
 ::-webkit-scrollbar {
     width: 8px;
 

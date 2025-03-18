@@ -1,0 +1,5 @@
+/*  URL 목록 부모  */
+div.url-list-holder {
+    position: relative;
+    width: 100%;
+}

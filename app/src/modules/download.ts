@@ -64,7 +64,7 @@ export default class Downloader {
             "-c","copy",
             "-bsf:a","aac_adtstoasc",
             "-f","mp4",
-            outputFile
+            `"${outputFile}"`
         ], {
             shell: true,
             windowsHide: true
@@ -73,11 +73,19 @@ export default class Downloader {
         return new Promise((resolve,reject) => {
 
             proc.stdout.on('data', (message) => {
-                console.log('[ffmpeg]:',message.toString());
+                console.log('[ffmpeg data]:',message.toString())
+
+                if(message.toString()?.includes("Error")) {
+                    resolve({success:false, message: "FFMPEG 오류"})
+                }
             });
 
             proc.stderr.on('data', (err) => {
                 console.error("[ffmpeg]:",err.toString());
+
+                if(err.toString()?.includes("Error")) {
+                    resolve({ success: false, message: "FFMPEG 오류" })   
+                }
             })
 
             proc.on('close', (code) => {
@@ -85,8 +93,14 @@ export default class Downloader {
 
                 // procList에서 프로세스 제거
                 Downloader.procList = Downloader.procList.filter(p => p.pid !== proc.pid);
-                
-                resolve({ success: true, message: newFileName })
+
+                if(code !== 0) {
+                    // 오류
+                    resolve({success:false})
+                } else {
+                    // 성공
+                    resolve({ success: true, message: newFileName })
+                }
             })
         })
     }

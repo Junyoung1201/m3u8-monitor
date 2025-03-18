@@ -1,11 +1,10 @@
 import 'module-alias/register';
+import path from 'path';
 import { app, BrowserWindow } from "electron";
 import Variables from "./variable";
-import { Config } from "modules/config";
-import path from 'path';
-import 'modules/ipc-main';
-import 'modules/socket-io';
 import startSocketServer from 'modules/socket-io';
+import 'modules/ipc-main';
+import { Config } from "modules/config";
 import Downloader from 'modules/download';
 
 console.log("root:", Variables.rootDir,"preload:",path.join(__dirname, 'preload.js'))
@@ -44,6 +43,7 @@ function createMainWindow() {
 }
 
 app.whenReady().then(async () => {
+    console.clear();
     await Config.load();
     startSocketServer();
     createMainWindow();
